@@ -1,33 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import Header from './components/Header'
+import Filters from './components/Filters'
 
 const GlobalStyles = createGlobalStyle`
   body {
     @import url('https://fonts.googleapis.com/css?family=Roboto');
     font-family: 'Roboto', sans-serif;
   }
+  @media (min-width: 1310px) {
+    .container{
+      max-width: 1310px !important;
+    }
+  }
 `;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div> 
         <GlobalStyles />
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <Filters />        
       </div>
     );
   }
