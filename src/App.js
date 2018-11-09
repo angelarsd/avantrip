@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import Header from './components/Header'
-import Filters from './components/Filters'
+import Header from './components/Header';
+import Filters from './components/Filters';
+import { connect } from 'react-redux';
+import { loadFilters } from './actions/filters';
+import { loadPackages } from './actions/packages';
+import Loading from "react-loading-bar";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -14,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
       max-width: 1310px !important;
     }
   }
-`
+`;
 const MainTitle = styled.h1`
     font-weight:lighter;
     text-align: center;
@@ -25,13 +29,20 @@ const MainTitle = styled.h1`
     b{
       font-weight: 800;
     }
-`
+`;
 
 class App extends Component {
+
+    componentWillMount() {
+        this.props.loadFilters();
+        this.props.loadPackages();
+    }
+
   render() {
     return (
       <div> 
         <GlobalStyles />
+        <Loading show={this.props.loading} color="red" showSpinner={false} />
         <Header />
         <Filters />
         <MainTitle>Vuelos destacados en <b>todas las estadías</b></MainTitle>
@@ -40,4 +51,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => ({
+    loading: state.filters.loading || state.packages.loading
+});
+
+export default connect(mapStateToProps, { loadFilters, loadPackages })(App)

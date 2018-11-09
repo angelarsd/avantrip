@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import background from '../assets/img/background.png';
 import { Container, Row, Col } from 'reactstrap';
 import BoxFilter from './BoxFilter'
+import { connect } from 'react-redux';
 
 const FilterContainers = styled.div`
     background: url(${background}) no-repeat center center; 
@@ -56,4 +57,8 @@ class Filters extends Component {
     }
 };
 
-export default Filters;
+const mapStateToProps = (state, ownProps) => ({
+    filters: state.filters.data
+});
+
+export default connect( mapStateToProps, {} )(Filters)
