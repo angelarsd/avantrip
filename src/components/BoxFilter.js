@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -24,22 +24,23 @@ const Box = styled.div`
         color: #4C92E1;
         font-weight: bold;
     }
-`
+`;
+
 class BoxFilter extends Component {
-    render(){
-        const { title, amount, selected } = this.props
-        return ( 
-            <Box className={selected?'selected':''}>
-                <div className='title'>{ title }</div>
-                <div className='amount'>desde ${ amount }</div>
-            </Box>
-        );
-    }
+  render() {
+    const {title, amount, selected} = this.props
+    return (
+      <Box className={selected ? 'selected' : ''}>
+        <div className='title'>{title}</div>
+        <div className='amount'>desde ${amount}</div>
+      </Box>
+    );
+  }
 }
 
 BoxFilter.propTypes = {
-    title: PropTypes.string
-    
+  title: PropTypes.string
+
 };
 
 export default BoxFilter;

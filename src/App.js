@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import React, {Component} from 'react';
+import styled, {createGlobalStyle} from 'styled-components';
 import Header from './components/Header';
 import Filters from './components/Filters';
-import { connect } from 'react-redux';
-import { loadFilters } from './actions/filters';
-import { loadPackages } from './actions/packages';
+import {connect} from 'react-redux';
+import {loadFilters} from './actions/filters';
+import {loadPackages} from './actions/packages';
 import Loading from "react-loading-bar";
 
 const GlobalStyles = createGlobalStyle`
@@ -33,18 +33,18 @@ const MainTitle = styled.h1`
 
 class App extends Component {
 
-    componentWillMount() {
-        this.props.loadFilters();
-        this.props.loadPackages();
-    }
+  componentWillMount() {
+    this.props.loadFilters();
+    this.props.loadPackages();
+  }
 
   render() {
     return (
-      <div> 
-        <GlobalStyles />
-        <Loading show={this.props.loading} color="red" showSpinner={false} />
-        <Header />
-        <Filters />
+      <div>
+        <GlobalStyles/>
+        <Loading show={this.props.loading} color="red" showSpinner={false}/>
+        <Header/>
+        <Filters/>
         <MainTitle>Vuelos destacados en <b>todas las estadías</b></MainTitle>
       </div>
     );
@@ -52,7 +52,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    loading: state.filters.loading || state.packages.loading
+  loading: state.filters.loading || state.packages.loading
 });
 
-export default connect(mapStateToProps, { loadFilters, loadPackages })(App)
+export default connect(mapStateToProps, {loadFilters, loadPackages})(App)
