@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import styled, {createGlobalStyle} from 'styled-components';
-import Header from './components/Header';
-import Filters from './components/Filters';
 import {connect} from 'react-redux';
 import {loadFilters} from './actions/filters';
 import {loadPackages} from './actions/packages';
+import styled, {createGlobalStyle} from 'styled-components';
+import Header from './components/Header';
+import Filters from './components/Filters';
+import Packages from './components/Packages';
+
 import Loading from "react-loading-bar";
 
 const GlobalStyles = createGlobalStyle`
@@ -41,11 +43,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <GlobalStyles/>
-        <Loading show={this.props.loading} color="red" showSpinner={false}/>
-        <Header/>
-        <Filters/>
+        <GlobalStyles />
+        <Loading show={this.props.loading} color="red" showSpinner={false} />
+        <Header />
+        <Filters />
         <MainTitle>Vuelos destacados en <b>todas las estadías</b></MainTitle>
+        <Packages />
       </div>
     );
   }

@@ -40,7 +40,6 @@ class BoxFilter extends Component {
 
 BoxFilter.propTypes = {
   title: PropTypes.string
-
 };
 
 export default BoxFilter;

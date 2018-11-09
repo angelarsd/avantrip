@@ -35,21 +35,11 @@ class Filters extends Component {
         <Container fluid={true}>
           <PreTitle>Los vuelos más baratos para tu estadía en <b>Miami</b></PreTitle>
           <Row>
-            <Col lg={{size: 2, offset: 1}}>
-              <BoxFilter title="Todas las estadías" amount="26.119" selected={true}/>
-            </Col>
-            <Col lg={2}>
-              <BoxFilter title="Todas las estadías" amount="26.119"/>
-            </Col>
-            <Col lg={2}>
-              <BoxFilter title="Todas las estadías" amount="26.119"/>
-            </Col>
-            <Col lg={2}>
-              <BoxFilter title="Todas las estadías" amount="26.119"/>
-            </Col>
-            <Col lg={2}>
-              <BoxFilter title="Todas las estadías" amount="26.119"/>
-            </Col>
+            {this.props.filters.map( (filter, index) => (
+              <Col lg={ index === 0 ? { size: 2, offset: 1 } : { size: 2 } }>
+                <BoxFilter title={filter.name} amount={filter.bestPrice} selected={true} key={index} />
+              </Col>
+            ))}
           </Row>
         </Container>
       </FilterContainers>
