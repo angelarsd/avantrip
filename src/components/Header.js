@@ -3,8 +3,11 @@ import styled from "styled-components";
 import { Container } from 'reactstrap';
 import logo from '../assets/img/logo-avantrip.png'
 
-const HeaderContainer = styled(Container)`
-    margin: 10px 0;
+const HeaderContainer = styled.div`
+  background: white;
+  .container{
+      padding: 10px 0;
+  }
 `
 const Slogan = styled.span`
     color: #E1020B;
@@ -17,8 +20,10 @@ class Header extends Component {
     render() {
       return (
         <HeaderContainer>
-            <img src={logo} />
-            <Slogan>Viajar es la guita mejor invertida</Slogan>
+          <Container>
+              <img src={logo} alt=""/>
+              <Slogan>Viajar es la guita mejor invertida</Slogan>
+            </Container>
         </HeaderContainer>
       );
     }
