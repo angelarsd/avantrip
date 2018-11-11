@@ -10,7 +10,7 @@ import Packages from './components/Packages';
 
 const GlobalStyles = createGlobalStyle`
   body {
-    @import url('https://fonts.googleapis.com/css?family=Roboto');
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,900');
     font-family: 'Roboto', sans-serif !important;
     background-color: #EEEEED !important;
   }
@@ -21,15 +21,22 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 const MainTitle = styled.h1`
-    font-weight:lighter;
+    font-weight:100;
     text-align: center;
     color: #4A494B;
     margin: 40px 0;
     font-size: 38px;
     letter-spacing: -1px;
     b{
-      font-weight: 800;
+      font-weight: 900;
     }
+`;
+const Loading = styled(LoadingBar)`
+  z-index: 99999;
+  position:fixed;
+  background-color: #E1020B;
+  height: 2px;
+  top: 0;
 `;
 
 class App extends Component {
@@ -43,7 +50,7 @@ class App extends Component {
     return (
       <div>
         <GlobalStyles />
-        <LoadingBar style={{ zIndex: 99999, position: 'fixed', backgroundColor: '#e97032', height: 2, top: 0 }} progressIncrease={20}/>
+        <Loading progressIncrease={20}/>
         <Header />
         <Filters />
         <MainTitle>Vuelos destacados en <b>todas las estadías</b></MainTitle>

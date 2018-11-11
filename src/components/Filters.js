@@ -17,14 +17,14 @@ const FilterContainers = styled.div`
 `;
 
 const PreTitle = styled.h2`
-    font-weight:lighter;
+    font-weight: 100;
     text-align: center;
-    color: #FFF;
+    color: #FFF;  
     font-size: 24px;
     margin-bottom:25px;
     margin-top:0px;
     b{
-        font-weight: 700;
+        font-weight: 900;
     }
 `;
 

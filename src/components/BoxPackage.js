@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Col,  Row} from 'reactstrap';
 import styled from 'styled-components';
+import Icon from './Icons'
 
 const Box = styled.div`
   background: #FFF;
@@ -22,7 +23,9 @@ class BoxPackages extends Component {
         <img src={pack.img} alt="" className="img-fluid" width="100%"/>
         <div className="content-box">
           <Row>
-            <Col xs={4}>{pack.scales}</Col>
+            <Col xs={4}>
+              <Icon icon="airplane" width={16} height={16} /> {pack.scales}
+            </Col>
             <Col xs={8} className="text-right">Precio Desde</Col>
           </Row>
           <Row>

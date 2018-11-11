@@ -6,10 +6,9 @@ import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-loading-bar/dist/index.css';
 import {loadingBarMiddleware} from 'react-redux-loading-bar';
 import api from './middleware/api';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(
   rootReducer,
