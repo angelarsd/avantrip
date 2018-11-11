@@ -1,11 +1,18 @@
-import axios from 'axios'
+import { CALL_API } from '../middleware/api';
 
-export const LOAD_PACKAGES = 'LOAD_PACKAGES';
+export const PACKAGES_REQUEST = 'PACKAGES_REQUEST';
+export const PACKAGES_SUCCESS = 'PACKAGES_SUCCESS';
+export const PACKAGES_FAILURE = 'PACKAGES_FAILURE';
 
-export function loadPackages() {
-    return (dispatch, getState) => {
-        axios.get('https://api.myjson.com/bins/lp8c6').then( (response) => {
-            dispatch({type: LOAD_PACKAGES, data: response.data })
-        });
+const fetchPackages = () => {
+  return {
+    [CALL_API]: {
+      types: [PACKAGES_REQUEST, PACKAGES_SUCCESS, PACKAGES_FAILURE],
+      endpoint: 'lp8c6'
     }
-}
+  }
+};
+
+export const loadPackages = () => (dispatch, getState) => {
+  return dispatch(fetchPackages())
+};

@@ -36,8 +36,8 @@ class Filters extends Component {
           <PreTitle>Los vuelos más baratos para tu estadía en <b>Miami</b></PreTitle>
           <Row>
             {this.props.filters.map( (filter, index) => (
-              <Col lg={ index === 0 ? { size: 2, offset: 1 } : { size: 2 } }>
-                <BoxFilter title={filter.name} amount={filter.bestPrice} selected={true} key={index} />
+              <Col lg={ index === 0 ? { size: 2, offset: 1 } : { size: 2 } } key={index}>
+                <BoxFilter filter={filter} selected={false} />
               </Col>
             ))}
           </Row>

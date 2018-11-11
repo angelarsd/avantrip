@@ -1,10 +1,16 @@
-import { LOAD_FILTERS } from '../actions/filters'
+import { FILTERS_REQUEST, FILTERS_SUCCESS, FILTERS_FAILURE } from '../actions/filters'
 
-export function loadFilters(state = { loading: true , data: [] }, action) {
-    switch (action.type) {
-    case LOAD_FILTERS:
-        return Object.assign({}, state, { loading: false, data: action.data });
-    default:
-        return state;
+export function loadFilters(state = { data: [], loading: true , status: 'REQUESTING' }, action) {
+  let result;
+  switch (action.type) {
+      case FILTERS_REQUEST:
+        result = state; break;
+      case FILTERS_SUCCESS:
+        result = Object.assign({}, state, {data: action.response, isLoading: false, status: 'SUCCESS'}); break;
+      case FILTERS_FAILURE:
+        result = Object.assign({}, state, {isLoading: false, status: 'FAILURE'}); break;
+      default:
+        result = state;
     }
+    return result;
 }

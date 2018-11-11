@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker'
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import * as serviceWorker from './serviceWorker';
+import {Provider} from 'react-redux';
+import {applyMiddleware, createStore} from 'redux';
 import rootReducer from './reducers';
-import thunk from 'redux-thunk'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'react-loading-bar/dist/index.css'
+import thunk from 'redux-thunk';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-loading-bar/dist/index.css';
+import {loadingBarMiddleware} from 'react-redux-loading-bar';
+import api from './middleware/api';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk, api, loadingBarMiddleware({ promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE'] }))
+);
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(rootReducer)}>
+    <Provider store={store}>
         <App />
     </Provider>
     , document.getElementById('root'));

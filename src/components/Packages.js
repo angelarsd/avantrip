@@ -9,8 +9,8 @@ class Packages extends Component {
       <Container>
         <Row>
           {this.props.packages.map((pack, index) => (
-            <Col lg={3} md={4} sm={6} xs={12} >
-              <BoxPackage pack={pack} key = {index} />
+            <Col lg={3} md={4} sm={6} xs={12} key = {index} >
+              <BoxPackage pack={pack} />
             </Col>
           ))}
         </Row>

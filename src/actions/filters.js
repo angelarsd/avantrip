@@ -1,12 +1,18 @@
-import axios from 'axios'
+import { CALL_API } from '../middleware/api';
 
-export const LOAD_FILTERS = 'LOAD_FILTERS';
+export const FILTERS_REQUEST = 'FILTERS_REQUEST';
+export const FILTERS_SUCCESS = 'FILTERS_SUCCESS';
+export const FILTERS_FAILURE = 'FILTERS_FAILURE';
 
-export function loadFilters() {
-
-    return (dispatch, getState) => {
-        axios.get('https://api.myjson.com/bins/mkqli').then( (response) => {
-            dispatch({type: LOAD_FILTERS, data: response.data})
-        })
+const fetchFilters = () => {
+  return {
+    [CALL_API]: {
+      types: [FILTERS_REQUEST, FILTERS_SUCCESS, FILTERS_FAILURE],
+      endpoint: 'mkqli'
     }
-}
+  }
+};
+
+export const loadFilters = () => (dispatch, getState) => {
+  return dispatch(fetchFilters())
+};

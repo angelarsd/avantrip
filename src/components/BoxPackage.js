@@ -30,7 +30,7 @@ class BoxPackages extends Component {
             <Col xs={4} className="text-right">{pack.price}</Col>
           </Row>
           <div className="text-right">
-            <a className="fly-view" href={pack.link} target="_blank">Ver Vuelo</a>
+            <a className="fly-view" href={pack.link} target="_blank" rel="noopener noreferrer" >Ver Vuelo</a>
           </div>
         </div>
       </Box>

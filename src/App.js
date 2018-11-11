@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import LoadingBar from 'react-redux-loading-bar';
+import styled, {createGlobalStyle} from 'styled-components'
 import {loadFilters} from './actions/filters';
 import {loadPackages} from './actions/packages';
-import styled, {createGlobalStyle} from 'styled-components';
 import Header from './components/Header';
 import Filters from './components/Filters';
 import Packages from './components/Packages';
 
-import Loading from "react-loading-bar";
-
 const GlobalStyles = createGlobalStyle`
   body {
     @import url('https://fonts.googleapis.com/css?family=Roboto');
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif !important;
     background-color: #EEEEED !important;
   }
   @media (min-width: 1310px) {
@@ -44,7 +43,7 @@ class App extends Component {
     return (
       <div>
         <GlobalStyles />
-        <Loading show={this.props.loading} color="red" showSpinner={false} />
+        <LoadingBar style={{ zIndex: 99999, position: 'fixed', backgroundColor: '#e97032', height: 2, top: 0 }} progressIncrease={20}/>
         <Header />
         <Filters />
         <MainTitle>Vuelos destacados en <b>todas las estadías</b></MainTitle>

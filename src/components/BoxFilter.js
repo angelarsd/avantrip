@@ -28,11 +28,11 @@ const Box = styled.div`
 
 class BoxFilter extends Component {
   render() {
-    const {title, amount, selected} = this.props
+    const {filter, selected} = this.props;
     return (
       <Box className={selected ? 'selected' : ''}>
-        <div className='title'>{title}</div>
-        <div className='amount'>desde ${amount}</div>
+        <div className='title'>{filter.name}</div>
+        <div className='amount'>desde ${filter.bestPrice}</div>
       </Box>
     );
   }
