@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Col,  Row} from 'reactstrap';
 import styled from 'styled-components';
-import Icon from './Icons'
+import Icon from './Icons';
+import {numberFormatting} from '../utils'
 
 const Box = styled.div`
   background: #FFF;
@@ -14,6 +15,42 @@ const Box = styled.div`
     padding: 10px;
   }
 `;
+const Scales = styled.span`
+  font-size: 12px;
+  margin-left: 5px;
+`;
+const PriceTitle = styled.div`
+  font-size: 12px;
+  text-align: right;
+`;
+const Description = styled.div`
+  font-size: 20px;
+  font-weight: 900;
+  color: #E1020B;
+  height: 30px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  margin-right: -10px;
+`;
+const PriceAmount = styled.div`
+  font-size: 22px;
+  font-weight: 900;
+  color: #E1020B;
+  text-align: right;
+  margin-left: -10px;
+`;
+const ColCustom = styled(Col)`
+  height: 14px;
+`;
+const FlyView = styled.div`
+  padding-top: 10px;
+  a{
+    color: #61B5E7;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+`;
 
 class BoxPackages extends Component {
   render() {
@@ -23,18 +60,19 @@ class BoxPackages extends Component {
         <img src={pack.img} alt="" className="img-fluid" width="100%"/>
         <div className="content-box">
           <Row>
-            <Col xs={4}>
-              <Icon icon="airplane" width={16} height={16} /> {pack.scales}
-            </Col>
-            <Col xs={8} className="text-right">Precio Desde</Col>
+            <ColCustom xs={5}>
+              <Icon icon="airplane" width={14} height={14} />
+              <Scales>{pack.scales}</Scales>
+            </ColCustom>
+            <Col xs={7}><PriceTitle>Precio Desde</PriceTitle></Col>
           </Row>
           <Row>
-            <Col xs={8}>{pack.description}</Col>
-            <Col xs={4} className="text-right">{pack.price}</Col>
+            <Col xs={7}><Description>{pack.description}</Description></Col>
+            <Col xs={5}><PriceAmount>${numberFormatting(pack.price)}</PriceAmount></Col>
           </Row>
-          <div className="text-right">
-            <a className="fly-view" href={pack.link} target="_blank" rel="noopener noreferrer" >Ver Vuelo</a>
-          </div>
+          <FlyView className="text-right">
+            <a href={pack.link} target="_blank" rel="noopener noreferrer" >Ver Vuelo</a>
+          </FlyView>
         </div>
       </Box>
     );

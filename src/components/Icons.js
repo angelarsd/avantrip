@@ -12,7 +12,7 @@ const Icon = props => (
   <svg
     width={props.width ? props.width : '24'}
     height={props.width ? props.width : '24'}
-    viewBox="0 0 512 512"
+    viewBox="0 0 400 400"
     fill={props.color ? props.color : '#000'}>
     <path d={icons[props.icon].d} transform={icons[props.icon].transform}/>
   </svg>
