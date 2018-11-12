@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Box = styled.div`
@@ -16,30 +15,32 @@ const Box = styled.div`
         background:#F2F9FD;
         border-color: #4C92E1;
     }
-    .title{
-        color:#4A494B;
-        font-size: 12px
-    }
-    .amount{
-        color: #4C92E1;
-        font-weight: bold;
-    }
+`;
+const Title = styled.div`
+  color:#4A494B;
+  font-size: 12px
+`;
+const Amount = styled.div`
+  color: #4C92E1;
+  font-weight: bold;
+`;
+const Edit = styled.div`
+  float: right;
+  padding: 10px 0;
+  color: #61B5E7;
 `;
 
 class BoxFilter extends Component {
   render() {
     const {filter, selected} = this.props;
     return (
-      <Box className={selected ? 'selected' : ''}>
-        <div className='title'>{filter.name}</div>
-        <div className='amount'>desde ${filter.bestPrice}</div>
+      <Box className={selected ? 'selected' : ''} onClick={() => console.log('Hola1')}>
+        <Edit className='d-lg-none' onClick={(event) => this.props.editFilter(event)}>Editar</Edit>
+        <Title>{filter.name}</Title>
+        <Amount>desde ${filter.bestPrice}</Amount>
       </Box>
     );
   }
 }
-
-BoxFilter.propTypes = {
-  title: PropTypes.string
-};
 
 export default BoxFilter;

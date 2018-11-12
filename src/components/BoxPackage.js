@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Col,  Row} from 'reactstrap';
+import {Col, Row} from 'reactstrap';
 import styled from 'styled-components';
 import Icon from './Icons';
 import {numberFormatting} from '../utils'
+import { UncontrolledTooltip } from 'reactstrap';
 
 const Box = styled.div`
   background: #FFF;
@@ -32,6 +33,7 @@ const Description = styled.div`
   white-space:nowrap;
   text-overflow: ellipsis;
   margin-right: -10px;
+  cursor: default;
 `;
 const PriceAmount = styled.div`
   font-size: 22px;
@@ -51,10 +53,13 @@ const FlyView = styled.div`
     font-size: 14px;
   }
 `;
+const Tooltip = styled(UncontrolledTooltip)`
+  font-size: 12px !important;
+`;
 
 class BoxPackages extends Component {
   render() {
-    const {pack} = this.props;
+    const {pack, index} = this.props;
     return (
       <Box>
         <img src={pack.img} alt="" className="img-fluid" width="100%"/>
@@ -67,7 +72,12 @@ class BoxPackages extends Component {
             <Col xs={7}><PriceTitle>Precio Desde</PriceTitle></Col>
           </Row>
           <Row>
-            <Col xs={7}><Description>{pack.description}</Description></Col>
+            <Col xs={7}>
+              <Description id={'Tooltip-'+index}>{pack.description}</Description>
+              <Tooltip placement="bottom" target={'Tooltip-'+index}>
+                {pack.description}
+              </Tooltip>
+            </Col>
             <Col xs={5}><PriceAmount>${numberFormatting(pack.price)}</PriceAmount></Col>
           </Row>
           <FlyView className="text-right">

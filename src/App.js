@@ -30,6 +30,11 @@ const MainTitle = styled.h1`
     b{
       font-weight: 900;
     }
+    @media (max-width: 680px) {
+      padding: 0 10px;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
 `;
 const Loading = styled(LoadingBar)`
   z-index: 99999;
@@ -37,6 +42,9 @@ const Loading = styled(LoadingBar)`
   background-color: #E1020B;
   height: 2px;
   top: 0;
+  @media (max-width: 680px) {
+    background-color: #FFF;
+  }
 `;
 
 class App extends Component {
@@ -48,14 +56,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <GlobalStyles />
         <Loading progressIncrease={20}/>
         <Header />
         <Filters />
         <MainTitle>Vuelos destacados en <b>todas las estadías</b></MainTitle>
         <Packages />
-      </div>
+      </React.Fragment>
     );
   }
 }

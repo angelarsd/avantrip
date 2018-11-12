@@ -1,12 +1,23 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {Container} from 'reactstrap';
-import logo from '../assets/img/logo-avantrip.png'
+import {Container, Row, Col} from 'reactstrap';
+import Logo from '../components/Logo'
+import Icon from "./Icons";
 
 const HeaderContainer = styled.div`
   background: white;
-  .container{
-      padding: 10px 0;
+   @media (max-width: 680px) {
+    background: #E1020B;
+   }
+`;
+const Cell = styled(Col)`
+  padding-top: 10px;
+  padding-bottom: 10px;
+  path{
+    fill: #E1020B !important;
+    @media (max-width: 680px) {
+      fill: #FFF !important;
+    }
   }
 `;
 const Slogan = styled.span`
@@ -14,15 +25,31 @@ const Slogan = styled.span`
     margin-left: 12px;
     font-size: 13px;
     font-weight: bold;
+    @media (max-width: 680px) {
+      display: none;
+    }
+`;
+
+const IconContainer = styled.div`
+  float: right;
+  display: none;
+  @media (max-width: 680px) {
+    display: inline-block;
+  }
 `;
 
 class Header extends Component {
   render() {
     return (
       <HeaderContainer>
-        <Container>
-          <img src={logo} alt=""/>
-          <Slogan>Viajar es la guita mejor invertida</Slogan>
+        <Container fluid={true}>
+          <Row><Cell lg={12}>
+            <Logo />
+            <Slogan>Viajar es la guita mejor invertida</Slogan>
+            <IconContainer>
+              <Icon icon="iconmenu" width={32} height={24} color="#FFF" />
+            </IconContainer>
+          </Cell></Row>
         </Container>
       </HeaderContainer>
     );
