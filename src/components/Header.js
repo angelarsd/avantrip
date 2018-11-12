@@ -8,11 +8,19 @@ const HeaderContainer = styled.div`
   background: white;
    @media (max-width: 680px) {
     background: #E1020B;
+    height: 50px;
    }
 `;
 const Cell = styled(Col)`
   padding-top: 10px;
   padding-bottom: 10px;
+  @media (max-width: 680px) {
+    padding: 5px !important;  
+    svg.logo{
+      width: 40px;
+      height: 40px;
+    }
+  }
   path{
     fill: #E1020B !important;
     @media (max-width: 680px) {
@@ -33,6 +41,8 @@ const Slogan = styled.span`
 const IconContainer = styled.div`
   float: right;
   display: none;
+  padding: 5px;
+  cursor:pointer;
   @media (max-width: 680px) {
     display: inline-block;
   }
@@ -47,7 +57,7 @@ class Header extends Component {
             <Logo />
             <Slogan>Viajar es la guita mejor invertida</Slogan>
             <IconContainer>
-              <Icon icon="iconmenu" width={32} height={24} color="#FFF" />
+              <Icon icon="iconmenu" width={24} height={24} color="#FFF" />
             </IconContainer>
           </Cell></Row>
         </Container>
