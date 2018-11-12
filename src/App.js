@@ -61,7 +61,7 @@ class App extends Component {
         <Loading progressIncrease={20}/>
         <Header />
         <Filters />
-        <MainTitle>Vuelos destacados en <b>todas las estadías</b></MainTitle>
+        <MainTitle>Vuelos destacados en <b>{this.props.currentFilter.name}</b></MainTitle>
         <Packages />
       </React.Fragment>
     );
@@ -69,7 +69,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  loading: state.filters.loading || state.packages.loading
+  loading: state.filters.loading || state.packages.loading,
+  currentFilter: state.currentFilter.data
 });
 
 export default connect(mapStateToProps, {loadFilters, loadPackages})(App)

@@ -5,6 +5,7 @@ import background from '../assets/img/background.png';
 import {Col, Container, Row} from 'reactstrap';
 import BoxFilter from './BoxFilter';
 import ModalFilters from './ModalFilters';
+import {changeFilter} from '../actions/filters';
 
 const FilterContainers = styled.div`
     background: url(${background}) no-repeat center center; 
@@ -44,7 +45,13 @@ class Filters extends Component {
     event.stopPropagation();
   };
 
+  handleFilter = (filter) =>{
+    this.props.changeFilter(filter);
+    this.setState({modal: false});
+  };
+
   render() {
+
     return (
       <FilterContainers>
         <Container fluid={true}>
@@ -52,12 +59,14 @@ class Filters extends Component {
           <Row>
             {this.props.filters.map((filter, index) => (
               <Col lg={index === 0 ? {size: 2, offset: 1} : {size: 2}} key={index}
-                   className={index === 0 ? 'd-block' : 'd-none d-lg-block'}>
-                <BoxFilter filter={filter} selected={false} editFilter={this.editFilter}/>
+                   className={this.props.currentFilter.id === filter.id ? 'd-block' : 'd-none d-lg-block'}>
+                <BoxFilter filter={filter} editFilter={this.editFilter} handleFilter={this.handleFilter}
+                           selected={this.props.currentFilter.id === filter.id}/>
               </Col>
             ))}
           </Row>
-          <ModalFilters filters={this.props.filters} modal={this.state.modal} editFilter={this.editFilter}/>
+          <ModalFilters filters={this.props.filters} modal={this.state.modal} editFilter={this.editFilter}
+                        handleFilter={this.handleFilter} currentFilter={this.props.currentFilter}/>
         </Container>
       </FilterContainers>
     );
@@ -65,7 +74,8 @@ class Filters extends Component {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  filters: state.filters.data
+  filters: state.filters.data,
+  currentFilter: state.currentFilter.data
 });
 
-export default connect(mapStateToProps, {})(Filters)
+export default connect(mapStateToProps, {changeFilter})(Filters)

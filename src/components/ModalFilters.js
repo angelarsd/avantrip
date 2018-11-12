@@ -11,7 +11,7 @@ const Amount = styled.div`
   font-weight: bold;
 `;
 const Li = styled.li`
-  &:hover{
+  &:hover, &.selected{
     cursor: pointer;
     background:#F2F9FD;
     border-color: #4C92E1;
@@ -34,7 +34,8 @@ class ModalFilters extends Component {
           </Close>
           <ul className="list-group">
             {this.props.filters.map((filter, index) => (
-              <Li className="list-group-item">
+              <Li className={this.props.currentFilter.id === filter.id ? "list-group-item selected": "list-group-item"}
+                  onClick={()=>this.props.handleFilter(filter)} key={index}>
                 <Title>{filter.name}</Title>
                 <Amount>desde ${filter.bestPrice}</Amount>
               </Li>

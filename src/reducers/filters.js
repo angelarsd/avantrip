@@ -1,4 +1,4 @@
-import { FILTERS_REQUEST, FILTERS_SUCCESS, FILTERS_FAILURE } from '../actions/filters'
+import { FILTERS_REQUEST, FILTERS_SUCCESS, FILTERS_FAILURE, CHANGE_FILTERS } from '../actions/filters'
 
 export function loadFilters(state = { data: [], loading: true , status: 'REQUESTING' }, action) {
   let result;
@@ -14,3 +14,14 @@ export function loadFilters(state = { data: [], loading: true , status: 'REQUEST
     }
     return result;
 }
+
+export function currentFilter(state = {data: {id: "0", name:"Todas las estadías", bestPrice: "0"}, update_version: 0}, action){
+  let result;
+  switch (action.type) {
+    case CHANGE_FILTERS:
+      result = Object.assign({}, state, {data: action.filter, update_version: state.update_version + 1}); break;
+    default:
+      result = state;
+  }
+  return result;
+};

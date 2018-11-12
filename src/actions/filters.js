@@ -16,3 +16,13 @@ const fetchFilters = () => {
 export const loadFilters = () => (dispatch, getState) => {
   return dispatch(fetchFilters())
 };
+
+
+export const CHANGE_FILTERS = 'CHANGE_FILTERS';
+
+export const changeFilter = filter => (dispatch, getState) => {
+  return dispatch({
+    type: CHANGE_FILTERS,
+    filter: filter
+  })
+};

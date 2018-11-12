@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import {numberFormatting} from '../utils'
 
 const Box = styled.div`
     background: #FFF;
@@ -34,10 +35,10 @@ class BoxFilter extends Component {
   render() {
     const {filter, selected} = this.props;
     return (
-      <Box className={selected ? 'selected' : ''} onClick={() => console.log('Hola1')}>
+      <Box className={selected ? 'selected' : ''} onClick={() => this.props.handleFilter(filter)}>
         <Edit className='d-lg-none' onClick={(event) => this.props.editFilter(event)}>Editar</Edit>
         <Title>{filter.name}</Title>
-        <Amount>desde ${filter.bestPrice}</Amount>
+        <Amount>desde ${numberFormatting(filter.bestPrice)}</Amount>
       </Box>
     );
   }

@@ -5,10 +5,14 @@ import BoxPackage from './BoxPackage';
 
 class Packages extends Component {
   render() {
+    let packagesFiltered = this.props.packages;
+    if (this.props.currentFilter.id !== "0"){
+      packagesFiltered = packagesFiltered.filter(p => p.parentId === this.props.currentFilter.id )
+    }
     return (
       <Container fluid={true}>
         <Row>
-          {this.props.packages.map((pack, index) => (
+          {packagesFiltered.map((pack, index) => (
             <Col lg={3} md={4} sm={6} xs={12} key={index} >
               <BoxPackage pack={pack} index={index} />
             </Col>
@@ -20,7 +24,8 @@ class Packages extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  packages: state.packages.data
+  packages: state.packages.data,
+  currentFilter: state.currentFilter.data
 });
 
 export default connect(mapStateToProps, {})(Packages)
