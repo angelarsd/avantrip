@@ -56,10 +56,10 @@ class Header extends Component {
           <Row><Cell lg={12}>
             <Animated animationIn="fadeInDown" isVisible={true} >
               <Logo /> <Slogan>Viajar es la guita mejor invertida</Slogan>
+              <IconContainer>
+                <Icon icon="iconmenu" width={24} height={24} color="#FFF" />
+              </IconContainer>
             </Animated>
-            <IconContainer>
-              <Icon icon="iconmenu" width={24} height={24} color="#FFF" />
-            </IconContainer>
           </Cell></Row>
         </Container>
       </HeaderContainer>
