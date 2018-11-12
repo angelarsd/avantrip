@@ -6,6 +6,7 @@ import {Col, Container, Row} from 'reactstrap';
 import BoxFilter from './BoxFilter';
 import ModalFilters from './ModalFilters';
 import {changeFilter} from '../actions/filters';
+import {Animated} from "react-animated-css";
 
 const FilterContainers = styled.div`
     background: url(${background}) no-repeat center center; 
@@ -60,8 +61,10 @@ class Filters extends Component {
             {this.props.filters.map((filter, index) => (
               <Col lg={index === 0 ? {size: 2, offset: 1} : {size: 2}} key={index}
                    className={this.props.currentFilter.id === filter.id ? 'd-block' : 'd-none d-lg-block'}>
-                <BoxFilter filter={filter} editFilter={this.editFilter} handleFilter={this.handleFilter}
-                           selected={this.props.currentFilter.id === filter.id}/>
+                  <Animated animationIn="bounceInLeft" isVisible={true} animationInDelay={index*300}>
+                    <BoxFilter filter={filter} editFilter={this.editFilter} handleFilter={this.handleFilter}
+                               selected={this.props.currentFilter.id === filter.id}/>
+                  </Animated>
               </Col>
             ))}
           </Row>

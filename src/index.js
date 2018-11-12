@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import {loadingBarMiddleware} from 'react-redux-loading-bar';
 import api from './middleware/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/css/animate.min.css';
 
 const store = createStore(
   rootReducer,

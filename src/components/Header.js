@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Container, Row, Col} from 'reactstrap';
 import Logo from '../components/Logo'
 import Icon from "./Icons";
+import {Animated} from "react-animated-css";
 
 const HeaderContainer = styled.div`
   background: white;
@@ -37,7 +38,6 @@ const Slogan = styled.span`
       display: none;
     }
 `;
-
 const IconContainer = styled.div`
   float: right;
   display: none;
@@ -54,8 +54,9 @@ class Header extends Component {
       <HeaderContainer>
         <Container fluid={true}>
           <Row><Cell lg={12}>
-            <Logo />
-            <Slogan>Viajar es la guita mejor invertida</Slogan>
+            <Animated animationIn="fadeInDown" isVisible={true} >
+              <Logo /> <Slogan>Viajar es la guita mejor invertida</Slogan>
+            </Animated>
             <IconContainer>
               <Icon icon="iconmenu" width={24} height={24} color="#FFF" />
             </IconContainer>
